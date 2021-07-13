@@ -33,6 +33,7 @@ import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.factory.ModelFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -64,9 +65,9 @@ import static com.day.cq.wcm.api.NameConstants.NN_CONTENT;
  */
 @Model(adaptables = SlingHttpServletRequest.class,
     adapters = {ExperienceFragment.class, ComponentExporter.class, ContainerExporter.class },
-    resourceType = {ExperienceFragmentImpl.RESOURCE_TYPE_V1 })
+    resourceType = {ExperienceFragmentImpl.RESOURCE_TYPE_V1, ExperienceFragmentImpl.RESOURCE_TYPE_V2 })
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class ExperienceFragmentImpl implements ExperienceFragment {
+public class ExperienceFragmentImpl extends AbstractComponentImpl implements ExperienceFragment {
 
     /**
      * Logger.
@@ -77,6 +78,7 @@ public class ExperienceFragmentImpl implements ExperienceFragment {
      * The experience fragment component resource type.
      */
     public static final String RESOURCE_TYPE_V1 = "core/wcm/components/experiencefragment/v1/experiencefragment";
+    public static final String RESOURCE_TYPE_V2 = "core/wcm/components/experiencefragment/v2/experiencefragment";
 
     /**
      * Sling path delimiter.
@@ -265,9 +267,9 @@ public class ExperienceFragmentImpl implements ExperienceFragment {
         if (this.children == null) {
             this.children = Optional.ofNullable(this.getLocalizedFragmentVariationPath())
                     .filter(StringUtils::isNotBlank)
-                    .map(this.request.getResourceResolver()::getResource)
+                    .map(this.resource.getResourceResolver()::getResource)
                     .map(Resource::listChildren)
-                    .map(it -> ContentFragmentUtils.getComponentExporters(it, this.modelFactory, this.request))
+                    .map(it -> ContentFragmentUtils.getComponentExporters(it, this.modelFactory, this.request, this.resource))
                     .orElseGet(LinkedHashMap::new);
         }
         return this.children;

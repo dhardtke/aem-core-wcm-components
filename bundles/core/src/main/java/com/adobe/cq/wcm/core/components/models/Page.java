@@ -16,6 +16,7 @@
 package com.adobe.cq.wcm.core.components.models;
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -141,13 +142,20 @@ public interface Page extends ContainerExporter, Component {
     String FN_TOUCH_ICON_152 = "touch-icon_152.png";
 
     /**
+     * Name of the node holding the properties of the featured image of the page.
+     *
+     * @since com.adobe.cq.wcm.core.components.models 12.21.0
+     */
+    String NN_PAGE_FEATURED_IMAGE = "cq:featuredimage";
+
+    /**
      * Returns the language of this page, if one has been defined. Otherwise the default {@link java.util.Locale} will be used.
      *
      * @return the language code (IETF BCP 47) for this page
      * @since com.adobe.cq.wcm.core.components.models 11.0.0; marked <code>default</code> in 12.1.0
      */
     default String getLanguage() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -157,7 +165,7 @@ public interface Page extends ContainerExporter, Component {
      * @since com.adobe.cq.wcm.core.components.models 11.0.0; marked <code>default</code> in 12.1.0
      */
     default Calendar getLastModifiedDate() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -168,7 +176,7 @@ public interface Page extends ContainerExporter, Component {
      */
     @JsonIgnore
     default String[] getKeywords() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -178,7 +186,7 @@ public interface Page extends ContainerExporter, Component {
      * @since com.adobe.cq.wcm.core.components.models 11.0.0; marked <code>default</code> in 12.1.0
      */
     default String getDesignPath() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -188,7 +196,7 @@ public interface Page extends ContainerExporter, Component {
      * @since com.adobe.cq.wcm.core.components.models 11.0.0; marked <code>default</code> in 12.1.0
      */
     default String getStaticDesignPath() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -215,7 +223,7 @@ public interface Page extends ContainerExporter, Component {
     @Deprecated
     @JsonIgnore
     default Map<String, String> getFavicons() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -225,7 +233,7 @@ public interface Page extends ContainerExporter, Component {
      * @since com.adobe.cq.wcm.core.components.models 11.0.0; marked <code>default</code> in 12.1.0
      */
     default String getTitle() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -235,7 +243,7 @@ public interface Page extends ContainerExporter, Component {
      * @since com.adobe.cq.wcm.core.components.models 11.0.0; marked <code>default</code> in 12.18.0
      */
     default String getBrandSlug() {
-    	throw new UnsupportedOperationException();
+    	return null;
     }
     
     /**
@@ -248,7 +256,7 @@ public interface Page extends ContainerExporter, Component {
      */
     @JsonIgnore
     default String[] getClientLibCategories() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -261,7 +269,7 @@ public interface Page extends ContainerExporter, Component {
      */
     @JsonIgnore
     default String[] getClientLibCategoriesJsBody() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -274,7 +282,7 @@ public interface Page extends ContainerExporter, Component {
      */
     @JsonIgnore
     default String[] getClientLibCategoriesJsHead() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -284,7 +292,7 @@ public interface Page extends ContainerExporter, Component {
      * @since com.adobe.cq.wcm.core.components.models 11.0.0; marked <code>default</code> in 12.1.0
      */
     default String getTemplateName() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -295,7 +303,7 @@ public interface Page extends ContainerExporter, Component {
      */
     @Nullable
     default String getAppResourcesPath() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -305,7 +313,7 @@ public interface Page extends ContainerExporter, Component {
      * @since com.adobe.cq.wcm.core.components.models 12.2.0
      */
     default String getCssClassNames() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -316,7 +324,7 @@ public interface Page extends ContainerExporter, Component {
      */
     @Nullable
     default NavigationItem getRedirectTarget() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     /**
@@ -326,7 +334,7 @@ public interface Page extends ContainerExporter, Component {
      * @since com.adobe.cq.wcm.core.components.models 12.3.0
      */
     default boolean hasCloudconfigSupport() {
-        throw new UnsupportedOperationException();
+        return false;
     }
 
     /**
@@ -337,7 +345,7 @@ public interface Page extends ContainerExporter, Component {
      */
     @NotNull
     default Set<String> getComponentsResourceTypes() {
-        throw new UnsupportedOperationException();
+        return Collections.emptySet();
     }
 
     /**
@@ -347,7 +355,7 @@ public interface Page extends ContainerExporter, Component {
     @NotNull
     @Override
     default String[] getExportedItemsOrder() {
-        throw new UnsupportedOperationException();
+        return new String[]{};
     }
 
     /**
@@ -357,7 +365,7 @@ public interface Page extends ContainerExporter, Component {
     @NotNull
     @Override
     default Map<String, ? extends ComponentExporter> getExportedItems() {
-        throw new UnsupportedOperationException();
+        return Collections.emptyMap();
     }
 
     /**
@@ -367,7 +375,7 @@ public interface Page extends ContainerExporter, Component {
     @NotNull
     @Override
     default String getExportedType() {
-        throw new UnsupportedOperationException();
+        return "";
     }
 
     /**

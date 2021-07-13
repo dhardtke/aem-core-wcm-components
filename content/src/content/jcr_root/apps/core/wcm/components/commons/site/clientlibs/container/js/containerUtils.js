@@ -68,7 +68,25 @@
             if (component && component._elements && component._elements[itemType]) {
                 return component._elements[itemType][idx];
             }
-        }
+        },
 
+        /**
+         * Scrolls the browser on page reload (if URL contains URI fragment) to the item of the container component (accordion, tabs)
+           that corresponds to the deep link in the URL fragment.
+         * This method fixes the issue existent with Chrome and related browsers, which are not scrolling on page reload (if URL contains URI fragment)
+           to the element that corresponds to the deep link in the URL fragment.
+         * Small setTimeout is needed, otherwise the scrolling will not work on Chrome.
+         */
+        scrollToAnchor: function() {
+            setTimeout(function() {
+                if (location.hash && location.hash !== "#") {
+                    var anchorLocation = decodeURIComponent(location.hash);
+                    var anchorElement = document.querySelector(anchorLocation);
+                    if (anchorElement && anchorElement.offsetTop) {
+                        anchorElement.scrollIntoView();
+                    }
+                }
+            }, 100);
+        }
     };
 }());

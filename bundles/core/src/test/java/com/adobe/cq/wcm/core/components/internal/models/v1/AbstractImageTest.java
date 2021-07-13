@@ -74,9 +74,11 @@ public class AbstractImageTest {
     protected static final String IMAGE27_PATH = PAGE + "/jcr:content/root/image27";
     protected static final String IMAGE28_PATH = PAGE + "/jcr:content/root/image28";
     protected static final String IMAGE29_PATH = PAGE + "/jcr:content/root/image29";
+    protected static final String IMAGE30_PATH = PAGE + "/jcr:content/root/image30";
     protected static final String TEMPLATE_PATH = "/conf/coretest/settings/wcm/templates/testtemplate";
     protected static final String TEMPLATE_STRUCTURE_PATH = TEMPLATE_PATH + "/structure";
     protected static final String TEMPLATE_IMAGE_PATH = TEMPLATE_STRUCTURE_PATH + "/jcr:content/root/image_template";
+    protected static final String TEMPLATE_IMAGE_NO_DATE_PATH = TEMPLATE_STRUCTURE_PATH + "/jcr:content/root/image_template_no_date";
     protected static final String PNG_IMAGE_BINARY_NAME = "Adobe_Systems_logo_and_wordmark.png";
     protected static final String GIF_IMAGE_BINARY_NAME = "Adobe_Systems_logo_and_wordmark.gif";
     protected static final String JPG_IMAGE_BINARY_NAME = "Adobe_Systems_logo_and_wordmark.jpg";
